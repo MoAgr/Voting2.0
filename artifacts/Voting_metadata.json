@@ -66,6 +66,100 @@
 				],
 				"stateMutability": "view",
 				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					}
+				],
+				"name": "register",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint8",
+						"name": "pollIndex",
+						"type": "uint8"
+					},
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "name",
+								"type": "string"
+							},
+							{
+								"internalType": "uint8",
+								"name": "votes",
+								"type": "uint8"
+							},
+							{
+								"components": [
+									{
+										"internalType": "string",
+										"name": "name",
+										"type": "string"
+									},
+									{
+										"internalType": "address",
+										"name": "addr",
+										"type": "address"
+									},
+									{
+										"internalType": "bool",
+										"name": "voted",
+										"type": "bool"
+									}
+								],
+								"internalType": "struct Voting.Voter[]",
+								"name": "voters",
+								"type": "tuple[]"
+							}
+						],
+						"internalType": "struct Voting.Option",
+						"name": "option",
+						"type": "tuple"
+					}
+				],
+				"name": "vote",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "voters",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "addr",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "voted",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -96,11 +190,11 @@
 	},
 	"sources": {
 		"Voting.sol": {
-			"keccak256": "0x5231c3105898b59bd60fa6665801d0a1ffff3e64fc95b66627316de706adeb43",
+			"keccak256": "0x7715efcc9f1b6058b64ceafe4c967431d43fe1c937733806c69cc950726bbb85",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://b234c98ae113343c6dcf3785a9066b96c7786c625a208e47a1c8968454c34fbd",
-				"dweb:/ipfs/QmaPHhpiTWR8mJEkCfyTeCyNvBnGu4bdTPe7vezBPLviQx"
+				"bzz-raw://5edd5c4b680c17a696cda6b140ff811109964bf4b5e779e6934b787e5a977ff9",
+				"dweb:/ipfs/QmSe2uzfRvv3tT6wun7uczQXQXuE6tPALaHyLDtYwkJKm6"
 			]
 		}
 	},

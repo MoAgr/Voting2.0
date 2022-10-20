@@ -27,9 +27,26 @@ contract Voting{
     }
 
     Poll[] public polls;
+    mapping(address=>Voter) public voters;
 
     Option temp;
     Poll tempPoll;
+
+    modifier preventTwice(){
+        require(keccak256(abi.encodePacked(voters[msg.sender].name))==keccak256(abi.encodePacked("")),"Already Registered");
+        _;
+    }
+
+    modifier votable(uint pollIndex){
+        require(polls[pollIndex].creator!=msg.sender,"Creator cannot vote!");
+        require(keccak256(abi.encodePacked(voters[msg.sender].name))!=keccak256(abi.encodePacked("")),"Not registered!");
+        require(voters[msg.sender].voted==false,"Account already voted!");
+        _;
+    }
+
+    function register(string memory name)public preventTwice{
+        voters[msg.sender]=Voter(name,msg.sender,false);
+    }
 
     function createPoll(string[] memory options, uint start, uint end)public{ //check memory or storage
         globalPollNo++;
@@ -51,6 +68,10 @@ contract Voting{
         //end of snippet
 
         polls.push(_tempPoll);
+
+    }
+
+    function vote(uint8 pollIndex,Option memory option) public votable(pollIndex){
 
     }
 
