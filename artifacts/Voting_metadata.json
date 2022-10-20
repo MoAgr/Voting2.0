@@ -8,43 +8,9 @@
 			{
 				"inputs": [
 					{
-						"components": [
-							{
-								"internalType": "string",
-								"name": "name",
-								"type": "string"
-							},
-							{
-								"internalType": "uint8",
-								"name": "votes",
-								"type": "uint8"
-							},
-							{
-								"components": [
-									{
-										"internalType": "string",
-										"name": "name",
-										"type": "string"
-									},
-									{
-										"internalType": "address",
-										"name": "addr",
-										"type": "address"
-									},
-									{
-										"internalType": "bool",
-										"name": "voted",
-										"type": "bool"
-									}
-								],
-								"internalType": "struct Voting.voter[]",
-								"name": "voters",
-								"type": "tuple[]"
-							}
-						],
-						"internalType": "struct Voting.option[]",
+						"internalType": "string[]",
 						"name": "options",
-						"type": "tuple[]"
+						"type": "string[]"
 					},
 					{
 						"internalType": "uint256",
@@ -130,11 +96,11 @@
 	},
 	"sources": {
 		"Voting.sol": {
-			"keccak256": "0xf500f3ea59e24f3858dbf322b5dadfd69bf50b16ff85a58bdedd8e7b0203d9ec",
+			"keccak256": "0x5231c3105898b59bd60fa6665801d0a1ffff3e64fc95b66627316de706adeb43",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://d06d1edb985c96c862b5cab994f8207624e8855a171c54f48a91c627f760a800",
-				"dweb:/ipfs/Qma5T1DQCcS5J3G6GCxy4DaMyX4yJLScjkBxCQGHMncZvt"
+				"bzz-raw://b234c98ae113343c6dcf3785a9066b96c7786c625a208e47a1c8968454c34fbd",
+				"dweb:/ipfs/QmaPHhpiTWR8mJEkCfyTeCyNvBnGu4bdTPe7vezBPLviQx"
 			]
 		}
 	},
