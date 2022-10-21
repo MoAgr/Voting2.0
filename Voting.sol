@@ -22,40 +22,41 @@ contract Voting{
         uint8 pollNo;
         uint8 nOptn;
         Option[] options;
-        uint startTime;
+        uint duration;
         uint endTime;
     }
 
     Poll[] public polls;
-    mapping(address=>Voter) public voters;
+    mapping(address=>Voter) public regVoters;
 
     Option temp;
     Poll tempPoll;
 
     modifier preventTwice(){
-        require(keccak256(abi.encodePacked(voters[msg.sender].name))==keccak256(abi.encodePacked("")),"Already Registered");
+        require(keccak256(abi.encodePacked(regVoters[msg.sender].name))==keccak256(abi.encodePacked("")),"Already Registered");
         _;
     }
-
-    modifier votable(uint pollIndex){
+ 
+    modifier votable(uint pollIndex){ //add out of index check also
+        require(block.timestamp<polls[pollIndex].endTime,"Voting Period is Over!");
         require(polls[pollIndex].creator!=msg.sender,"Creator cannot vote!");
-        require(keccak256(abi.encodePacked(voters[msg.sender].name))!=keccak256(abi.encodePacked("")),"Not registered!");
-        require(voters[msg.sender].voted==false,"Account already voted!");
+        require(keccak256(abi.encodePacked(regVoters[msg.sender].name))!=keccak256(abi.encodePacked("")),"Not registered!");
+        require(regVoters[msg.sender].voted==false,"Account already voted!");
         _;
     }
 
     function register(string memory name)public preventTwice{
-        voters[msg.sender]=Voter(name,msg.sender,false);
+        regVoters[msg.sender]=Voter(name,msg.sender,false);
     }
 
-    function createPoll(string[] memory options, uint start, uint end)public{ //check memory or storage
+    function createPoll(string[] memory options, uint duration)public{ //check memory or storage
         globalPollNo++;
 
         Poll storage _tempPoll=tempPoll;
         tempPoll.creator=msg.sender;
         tempPoll.pollNo=globalPollNo;
-        tempPoll.startTime=start;
-        tempPoll.endTime=end;
+        tempPoll.duration=duration;
+        tempPoll.endTime=block.timestamp+duration;
 
         //check this code snippet for gas
 
@@ -71,8 +72,12 @@ contract Voting{
 
     }
 
-    function vote(uint8 pollIndex,Option memory option) public votable(pollIndex){
-
+    function vote(uint8 pollIndex,uint8 optnIndex) public votable(pollIndex){ 
+        Poll storage poll=polls[pollIndex];
+        Option storage option=poll.options[optnIndex];
+        option.votes++;
+        option.voters.push(regVoters[msg.sender]);
+        regVoters[msg.sender].voted=true;
     }
 
 }
