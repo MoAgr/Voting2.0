@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
+import "hardhat/console.sol";
+
 contract Voting{
 
     uint8 globalPollNo=0; 
@@ -45,6 +47,10 @@ contract Voting{
         _;
     }
 
+    function returnTime()public view returns(uint){
+        return block.timestamp;
+    }
+
     function register(string memory name)public preventTwice{
         regVoters[msg.sender]=Voter(name,msg.sender,false);
     }
@@ -55,7 +61,8 @@ contract Voting{
         Poll storage _tempPoll=tempPoll;
         tempPoll.creator=msg.sender;
         tempPoll.pollNo=globalPollNo;
-        tempPoll.duration=duration;
+        tempPoll.duration=duration * 1 minutes; //duration currently only supports minutes
+        console.log(block.timestamp);
         tempPoll.endTime=block.timestamp+duration;
 
         //check this code snippet for gas
