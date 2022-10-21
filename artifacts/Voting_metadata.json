@@ -164,11 +164,11 @@
 	},
 	"sources": {
 		"Voting.sol": {
-			"keccak256": "0x43baae3e203adc0fe27d18123c2891a3b99bc8a99462d1089f540600bfc26755",
+			"keccak256": "0x9ae60bc0703c8bb3ddb209f3a8af9ff236819decf6494d4f2121881d7def644c",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://a7c251ceef864928f4ef02604a442b8424d70750447d1231e3630d0cdb980c10",
-				"dweb:/ipfs/QmYAooWe8JagC94r9J8pkScUsMboLN673TAkjWy58h9pDY"
+				"bzz-raw://bc690f48be097fb080a0606aebf1c8018e7f433c669dbb62ec93067da29fd469",
+				"dweb:/ipfs/QmRSBhbCkVqebVXV9mjWEBfWJCiwDYtixHL48LbrubMLLG"
 			]
 		},
 		"hardhat/console.sol": {
