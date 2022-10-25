@@ -63,8 +63,10 @@ contract Voting{
         tempPoll.pollNo=globalPollNo;
         tempPoll.duration=duration * 1 minutes; //duration currently only supports minutes
         // uint time=block.timestamp;
-        console.log(duration);
-        tempPoll.endTime=block.timestamp+duration;
+        console.log("Console.log:",block.timestamp);
+        console.log("Console.log:",tempPoll.duration);
+        tempPoll.endTime=block.timestamp+tempPoll.duration;
+        console.log("Console.log:",tempPoll.endTime);
 
         //check this code snippet for gas
 
